@@ -1,0 +1,478 @@
+{
+  "profile": {
+    "name": "Kim Chou",
+    "role": "Creative director",
+    "city": "Shang hai, CH",
+    "hero": "Three sprites, three crafts of quiet mending.\nDispel gloom, trim thoughts, soothe souls.\nSoft starlight for every worn-out day.",
+    "email": "hello@theonolan.example",
+    "phone": "+1 (213) 555-0148",
+    "socials": [
+      {
+        "label": "X",
+        "url": "https://x.com"
+      },
+      {
+        "label": "IG",
+        "url": "https://instagram.com"
+      },
+      {
+        "label": "BE",
+        "url": "https://behance.net"
+      },
+      {
+        "label": "LN",
+        "url": "https://linkedin.com"
+      }
+    ],
+    "heroChinese": "三个小精灵，三种静谧的修补技艺\n驱散阴霾，梳理思绪，抚慰心灵\n为每一个疲惫不堪的日子，洒下柔和的星光",
+    "navSignature": "KIM x Glow Mend"
+  },
+  "projects": [
+    {
+      "slug": "halden-farm",
+      "title": "Shield Soother",
+      "category": "Glow Mend",
+      "role": "角色设计",
+      "year": "2026",
+      "summary": "",
+      "cover": "/assets/characters/character-1-landscape.webp",
+      "images": [
+        "/assets/characters/character-1-portrait.webp",
+        "/assets/characters/character-1-gallery-portrait.webp"
+      ],
+      "nextSlug": "fieldwork-co",
+      "workCover": "/assets/characters/character-1-portrait.webp",
+      "titleChinese": "心盾抚慰师",
+      "detailImages": [
+        "/assets/characters/character-1-detail-small.webp",
+        "/assets/characters/character-1-detail-large.webp"
+      ],
+      "interaction": {
+        "base": "/assets/characters/shield-soother",
+        "frameCount": 192,
+        "fps": 24,
+        "neutralFrame": 0,
+        "width": 480,
+        "height": 640,
+        "icon": "/assets/characters/shield-soother/paw.webp",
+        "directions": [
+          {
+            "angle": -180,
+            "frame": 144
+          },
+          {
+            "angle": -135,
+            "frame": 216
+          },
+          {
+            "angle": -90,
+            "frame": 240
+          },
+          {
+            "angle": -45,
+            "frame": 252
+          },
+          {
+            "angle": 0,
+            "frame": 264
+          },
+          {
+            "angle": 45,
+            "frame": 276
+          },
+          {
+            "angle": 90,
+            "frame": 300
+          },
+          {
+            "angle": 135,
+            "frame": 312
+          },
+          {
+            "angle": 180,
+            "frame": 336
+          }
+        ],
+        "actions": [
+          {
+            "id": "head",
+            "label": "摸摸头",
+            "file": "head.mp4",
+            "x": 80,
+            "y": 16
+          },
+          {
+            "id": "hand",
+            "label": "摸摸手",
+            "file": "hand.mp4",
+            "x": 85,
+            "y": 43
+          },
+          {
+            "id": "trousers",
+            "label": "摸摸裤子",
+            "file": "trousers.mp4",
+            "x": 20,
+            "y": 70
+          }
+        ],
+        "atlas": {
+          "directory": "look-v3",
+          "columns": 8,
+          "rows": 6,
+          "count": 4
+        },
+        "poster": "/assets/characters/shield-soother/look-v3/poster.webp"
+      },
+      "galleryVideo": {
+        "src": "/assets/characters/shield-soother/gallery-v1.mp4",
+        "poster": "/assets/characters/shield-soother/gallery-v1-poster.webp"
+      }
+    },
+    {
+      "slug": "fieldwork-co",
+      "title": "Mind Trimmer",
+      "category": "Glow Mend",
+      "role": "角色设计",
+      "year": "2026",
+      "summary": "",
+      "cover": "/assets/characters/character-2-landscape.webp",
+      "images": [
+        "/assets/characters/character-2-portrait.webp",
+        "/assets/characters/character-2-gallery-portrait.webp"
+      ],
+      "nextSlug": "merel-skin",
+      "workCover": "/assets/characters/character-2-portrait.webp",
+      "titleChinese": "思绪修整师",
+      "detailImages": [
+        "/assets/characters/character-2-detail-small.webp",
+        "/assets/characters/character-2-detail-large.webp"
+      ],
+      "interaction": {
+        "base": "/assets/characters/mind-trimmer",
+        "frameCount": 192,
+        "fps": 24,
+        "neutralFrame": 0,
+        "width": 480,
+        "height": 640,
+        "icon": "/assets/characters/mind-trimmer/icon.webp",
+        "directions": [
+          {
+            "angle": -180,
+            "frame": 120
+          },
+          {
+            "angle": -135,
+            "frame": 132
+          },
+          {
+            "angle": -90,
+            "frame": 144
+          },
+          {
+            "angle": -45,
+            "frame": 228
+          },
+          {
+            "angle": 0,
+            "frame": 240
+          },
+          {
+            "angle": 45,
+            "frame": 252
+          },
+          {
+            "angle": 90,
+            "frame": 276
+          },
+          {
+            "angle": 135,
+            "frame": 296
+          },
+          {
+            "angle": 180,
+            "frame": 312
+          }
+        ],
+        "actions": [
+          {
+            "id": "head",
+            "label": "摸摸头",
+            "file": "head.mp4",
+            "x": 74,
+            "y": 14
+          },
+          {
+            "id": "hand",
+            "label": "摸摸手",
+            "file": "hand.mp4",
+            "x": 84,
+            "y": 44
+          },
+          {
+            "id": "trousers",
+            "label": "摸摸裤子",
+            "file": "trousers.mp4",
+            "x": 23,
+            "y": 61
+          }
+        ],
+        "atlas": {
+          "directory": "look-v1",
+          "columns": 8,
+          "rows": 6,
+          "count": 4
+        },
+        "poster": "/assets/characters/mind-trimmer/look-v1/poster.webp",
+        "iconStyle": "transparent-circle"
+      },
+      "galleryVideo": {
+        "src": "/assets/characters/mind-trimmer/gallery-v1.mp4",
+        "poster": "/assets/characters/mind-trimmer/gallery-v1-poster.webp"
+      }
+    },
+    {
+      "slug": "merel-skin",
+      "title": "Gloom Blaster",
+      "category": "Glow Mend",
+      "role": "角色设计",
+      "year": "2025",
+      "summary": "",
+      "cover": "/assets/characters/character-3-landscape.webp",
+      "images": [
+        "/assets/characters/character-3-portrait.webp",
+        "/assets/characters/character-3-gallery-portrait-v2.webp"
+      ],
+      "nextSlug": "halden-farm",
+      "workCover": "/assets/characters/character-3-gallery-portrait-v2.webp",
+      "titleChinese": "坏情绪清除师",
+      "detailImages": [
+        "/assets/characters/character-3-detail-small.webp",
+        "/assets/characters/character-3-detail-large.webp"
+      ],
+      "interaction": {
+        "base": "/assets/characters/gloom-blaster",
+        "frameCount": 192,
+        "fps": 24,
+        "neutralFrame": 0,
+        "width": 480,
+        "height": 640,
+        "icon": "/assets/characters/gloom-blaster/icon.webp",
+        "directions": [
+          {
+            "angle": -180,
+            "frame": 156
+          },
+          {
+            "angle": -135,
+            "frame": 216
+          },
+          {
+            "angle": -90,
+            "frame": 240
+          },
+          {
+            "angle": -45,
+            "frame": 252
+          },
+          {
+            "angle": 0,
+            "frame": 264
+          },
+          {
+            "angle": 45,
+            "frame": 288
+          },
+          {
+            "angle": 90,
+            "frame": 306
+          },
+          {
+            "angle": 135,
+            "frame": 330
+          },
+          {
+            "angle": 180,
+            "frame": 348
+          }
+        ],
+        "actions": [
+          {
+            "id": "head",
+            "label": "摸摸头",
+            "file": "head.mp4",
+            "x": 75,
+            "y": 16
+          },
+          {
+            "id": "hand",
+            "label": "摸摸手",
+            "file": "hand.mp4",
+            "x": 86,
+            "y": 43
+          },
+          {
+            "id": "trousers",
+            "label": "摸摸裤子",
+            "file": "trousers.mp4",
+            "x": 22,
+            "y": 56
+          }
+        ],
+        "atlas": {
+          "directory": "look-v1",
+          "columns": 8,
+          "rows": 6,
+          "count": 4
+        },
+        "poster": "/assets/characters/gloom-blaster/look-v1/poster.webp",
+        "iconStyle": "transparent-circle"
+      },
+      "galleryVideo": {
+        "src": "/assets/characters/gloom-blaster/gallery-v1.mp4",
+        "poster": "/assets/characters/gloom-blaster/gallery-v1-poster.webp"
+      }
+    }
+  ],
+  "assetMappings": {
+    "/assets/laB3UC6QHQqfuKItNzJef3bmSvo.jpg": "https://framerusercontent.com/images/laB3UC6QHQqfuKItNzJef3bmSvo.jpg",
+    "/assets/NNS6D6tHFQkD07J1rxuUoYc8N0.jpg": "https://framerusercontent.com/images/NNS6D6tHFQkD07J1rxuUoYc8N0.jpg",
+    "/assets/BK46KQfpywjFHfTvB9hKuqzRnL4.jpg": "https://framerusercontent.com/images/BK46KQfpywjFHfTvB9hKuqzRnL4.jpg",
+    "/assets/0YynObRreerYrXsVVM59DodS5s.jpg": "https://framerusercontent.com/images/0YynObRreerYrXsVVM59DodS5s.jpg",
+    "/assets/7deEkDIteZgU4SLDvYrZFqGcZo.jpg": "https://framerusercontent.com/images/7deEkDIteZgU4SLDvYrZFqGcZo.jpg",
+    "/assets/5mEkPTN1QqnKE1412rqhMsoKQ.jpg": "https://framerusercontent.com/images/5mEkPTN1QqnKE1412rqhMsoKQ.jpg",
+    "/assets/53DFMrBQnmUnbirSgxcbY6b5zU.jpg": "https://framerusercontent.com/images/53DFMrBQnmUnbirSgxcbY6b5zU.jpg",
+    "/assets/ryCTu9cMNTjSduKljAix0uBzYGM.jpg": "https://framerusercontent.com/images/ryCTu9cMNTjSduKljAix0uBzYGM.jpg",
+    "/assets/VDQBAVIdflNHBYfnb9xK0YI2hgA.jpg": "https://framerusercontent.com/images/VDQBAVIdflNHBYfnb9xK0YI2hgA.jpg",
+    "/assets/mX5DVpeq1qJDWChuFapFCaA8sI.jpg": "https://framerusercontent.com/images/mX5DVpeq1qJDWChuFapFCaA8sI.jpg",
+    "/assets/AMpJR85OKAJR4cFf4Rch543f9E.jpg": "https://framerusercontent.com/images/AMpJR85OKAJR4cFf4Rch543f9E.jpg",
+    "/assets/FyJOpXyVCeKLa8A4cdvZepCX4.jpg": "https://framerusercontent.com/images/FyJOpXyVCeKLa8A4cdvZepCX4.jpg",
+    "/assets/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/BLNB4FAQFNK56DWWNF7PMGTCOTZHOEII/ST3WKSSDMBK2MIQQO3MAVYWLF4FTOLFV/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2",
+    "/assets/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/HBNTRIISA5MEXGL5WPYI7CV2HIWTDV3Q/YDPDINVT673XLXNSTMLG4JNCZZMVVNPN/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2",
+    "/assets/A7AS3UPAGLC7MDVC67SBNTE5FGF2Z2RG.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/LVPXCMXCWY3V7PSXRMGRQUJDAS2DT47E/BPEVRT2HG7PPVVUS7A67MZQQZW6LR6A5/A7AS3UPAGLC7MDVC67SBNTE5FGF2Z2RG.woff2",
+    "/assets/O34WRFYO7JNWEBBA2LRV2XYRUSYXYDKH.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/XVUY2PHYBA6KMN4RMEMJPHQSTKCQ267G/UICOQA6KCSHFOSCPYDVVDNNCDKYFXHJB/O34WRFYO7JNWEBBA2LRV2XYRUSYXYDKH.woff2",
+    "/assets/6XPIMU23OJVRY676OG5YVJMWEHWICATX.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/OYB4CXKJQXKTNSLJMTDQOIVUL2V5EL7S/WYO2P7DQVV5RNXGMCUO2HL4RJP4VFUAS/6XPIMU23OJVRY676OG5YVJMWEHWICATX.woff2",
+    "/assets/C6VLICDGQWYKV6YT65TM5G3OVN4AOZBN.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/QMRBNVYKDJEZ66DA22SPWH5EVVYACHCU/ZHMXHHA546NDNEHJN5RPZX5KISJY5CWF/C6VLICDGQWYKV6YT65TM5G3OVN4AOZBN.woff2",
+    "/assets/TOHQHMLIEIPKVF2JPM6SVKXFYGO5G2TJ.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/A54N3N7J5AY6YOPYJKLHF5VH7G7HSSUN/ERWIWIB434FMFHQFSSBD233EP3C62HOI/TOHQHMLIEIPKVF2JPM6SVKXFYGO5G2TJ.woff2",
+    "/assets/J7XVDQ2IJENINPUAVBDJNH3VEXVDSPQQ.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/FQHNKZEV35SAMFWVFCFSORJXUNHNILL4/X4YCR4COAQTK5XB6JCDDBS7Q33AQWUAE/J7XVDQ2IJENINPUAVBDJNH3VEXVDSPQQ.woff2",
+    "/assets/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2": "https://framerusercontent.com/third-party-assets/fontshare/wf/5SZVFDB7V52TI6ULVC6J3WQZQCIZVDV5/ODYPSTCUDMKSTYIPTV4CLQ7URIK7XYBJ/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2",
+    "/assets/957qZMyx1LqtqMefTyNFRt4GY3g.jpg": "https://framerusercontent.com/images/957qZMyx1LqtqMefTyNFRt4GY3g.jpg",
+    "/assets/ssszWAAf6QavuABtveuE6ZwLuto.jpg": "https://framerusercontent.com/images/ssszWAAf6QavuABtveuE6ZwLuto.jpg",
+    "/assets/x2K4WFRQv1RNuV8WaNEXDwRJEw.jpg": "https://framerusercontent.com/images/x2K4WFRQv1RNuV8WaNEXDwRJEw.jpg",
+    "/assets/JHfGrUcvJEB5sCsaAdC07XEV9D4.jpg": "https://framerusercontent.com/images/JHfGrUcvJEB5sCsaAdC07XEV9D4.jpg",
+    "/assets/bu9HiC9fraUXIvXU40q6LCn3dyc.jpg": "https://framerusercontent.com/images/bu9HiC9fraUXIvXU40q6LCn3dyc.jpg",
+    "/assets/Lx0vdO66fmthAnR11fdBMUbC8.jpg": "https://framerusercontent.com/images/Lx0vdO66fmthAnR11fdBMUbC8.jpg",
+    "/assets/1fskr39Y4tTf8KCztymRfhIrM6s.jpg": "https://framerusercontent.com/images/1fskr39Y4tTf8KCztymRfhIrM6s.jpg",
+    "/assets/hMWz6BbWkD6FeNvXgAG4mpzJU38.jpg": "https://framerusercontent.com/images/hMWz6BbWkD6FeNvXgAG4mpzJU38.jpg",
+    "/assets/XSLhDRYx1NtRqIsQ7Afc9bsENc.jpg": "https://framerusercontent.com/images/XSLhDRYx1NtRqIsQ7Afc9bsENc.jpg",
+    "/assets/HApwxaWCpaKhaHEKSb3CwHM9maw.jpg": "https://framerusercontent.com/images/HApwxaWCpaKhaHEKSb3CwHM9maw.jpg",
+    "/assets/UeZf3JqEEwdV1KkpRyJbmvpMF4.jpg": "https://framerusercontent.com/images/UeZf3JqEEwdV1KkpRyJbmvpMF4.jpg",
+    "/assets/mpCTQBng7MMEoFe2NlUxb11ek.jpg": "https://framerusercontent.com/images/mpCTQBng7MMEoFe2NlUxb11ek.jpg",
+    "/assets/lGYtJ6k8gGrtboOv4lBx8p94l9A.jpg": "https://framerusercontent.com/images/lGYtJ6k8gGrtboOv4lBx8p94l9A.jpg",
+    "/assets/0tbHPUnAX6y15RxAsfQYmYgag.jpg": "https://framerusercontent.com/images/0tbHPUnAX6y15RxAsfQYmYgag.jpg",
+    "/assets/lVnS3JVijkZWntojMDk4E3JJPw.jpg": "https://framerusercontent.com/images/lVnS3JVijkZWntojMDk4E3JJPw.jpg",
+    "/assets/H4nGS7kKrZr64q8JKLfFIiHrJ58.jpg": "https://framerusercontent.com/images/H4nGS7kKrZr64q8JKLfFIiHrJ58.jpg",
+    "/assets/ctCti1BHXX0o0pQ2rOuiakfg.jpg": "https://framerusercontent.com/images/ctCti1BHXX0o0pQ2rOuiakfg.jpg",
+    "/assets/C6gfJHCbG5SdylKjqHLQDR8eY.jpg": "https://framerusercontent.com/images/C6gfJHCbG5SdylKjqHLQDR8eY.jpg",
+    "/assets/miMWz20S4aYZfP4zBQjnFhUWIE8.jpg": "https://framerusercontent.com/images/miMWz20S4aYZfP4zBQjnFhUWIE8.jpg",
+    "/assets/QMfTRFYADtoL3J4kkgoxmW61go.jpg": "https://framerusercontent.com/images/QMfTRFYADtoL3J4kkgoxmW61go.jpg",
+    "/assets/kMIUXcl2V44FwfRRa7Bh4EtsABA.jpg": "https://framerusercontent.com/images/kMIUXcl2V44FwfRRa7Bh4EtsABA.jpg",
+    "/assets/PfbiZKYDEeiVT8JvUBBVdCcTlVI.jpg": "https://framerusercontent.com/images/PfbiZKYDEeiVT8JvUBBVdCcTlVI.jpg",
+    "/assets/INA3SoqD550zMpzhUs6j6HMsqw.jpg": "https://framerusercontent.com/images/INA3SoqD550zMpzhUs6j6HMsqw.jpg",
+    "/assets/9Nusz6RukZ0WPEnL9k3JNJQmk.jpg": "https://framerusercontent.com/images/9Nusz6RukZ0WPEnL9k3JNJQmk.jpg",
+    "/assets/p6uIVC9rZZKkcASDTUs5ovs1ajg.jpg": "https://framerusercontent.com/images/p6uIVC9rZZKkcASDTUs5ovs1ajg.jpg",
+    "/assets/wzR16WHxx3zLo0AuDYPcaCCgZ70.jpg": "https://framerusercontent.com/images/wzR16WHxx3zLo0AuDYPcaCCgZ70.jpg",
+    "/assets/sDyjbWDpVZIdG34qhyCgg4zgUr8.jpg": "https://framerusercontent.com/images/sDyjbWDpVZIdG34qhyCgg4zgUr8.jpg",
+    "/assets/AfHibrpCw3vYU2D8o95EjsA2k.jpg": "https://framerusercontent.com/images/AfHibrpCw3vYU2D8o95EjsA2k.jpg",
+    "/assets/x0GGhmVH8FFGiwlP9Gp1Ri9sZU.jpg": "https://framerusercontent.com/images/x0GGhmVH8FFGiwlP9Gp1Ri9sZU.jpg",
+    "/assets/zQHKSo3vBRIRu9R6miV4JqVxe2Y.jpg": "https://framerusercontent.com/images/zQHKSo3vBRIRu9R6miV4JqVxe2Y.jpg",
+    "/assets/ZczPUrDMUxaV4Errz564remk8aA.jpg": "https://framerusercontent.com/images/ZczPUrDMUxaV4Errz564remk8aA.jpg",
+    "/assets/86QnLP1IAE6Wa3EUd824fsr8N9c.jpg": "https://framerusercontent.com/images/86QnLP1IAE6Wa3EUd824fsr8N9c.jpg",
+    "/assets/WkxCCAqTPtBVDOwcSVRe4Lq8Z9Y.jpg": "https://framerusercontent.com/images/WkxCCAqTPtBVDOwcSVRe4Lq8Z9Y.jpg",
+    "/assets/2vMrjilZciKgtPbepFBZgF1QA.jpg": "https://framerusercontent.com/images/2vMrjilZciKgtPbepFBZgF1QA.jpg",
+    "/assets/tDJL8M4wF6h7bh1D6P9uuPCulIc.jpg": "https://framerusercontent.com/images/tDJL8M4wF6h7bh1D6P9uuPCulIc.jpg",
+    "/assets/lPic9Djfb6jCddpCMWq8UZFSo.jpg": "https://framerusercontent.com/images/lPic9Djfb6jCddpCMWq8UZFSo.jpg",
+    "/assets/PQBSOUGHoZlaQa3PEqbc4hIcKb4.jpg": "https://framerusercontent.com/images/PQBSOUGHoZlaQa3PEqbc4hIcKb4.jpg",
+    "/assets/vwhXkv6EgSVPaNNpc67W8aPOo.jpg": "https://framerusercontent.com/images/vwhXkv6EgSVPaNNpc67W8aPOo.jpg",
+    "/assets/xDpYNK9F75Mxwl7OmUReyWUe9eI.jpg": "https://framerusercontent.com/images/xDpYNK9F75Mxwl7OmUReyWUe9eI.jpg",
+    "/assets/NitqDczPeze3jk12oA9cSGEDqOc.jpg": "https://framerusercontent.com/images/NitqDczPeze3jk12oA9cSGEDqOc.jpg",
+    "/assets/pt3iTxVIA1tetSDMpgOcOGEPD0.jpg": "https://framerusercontent.com/images/pt3iTxVIA1tetSDMpgOcOGEPD0.jpg",
+    "/assets/zzjgLBNDUTY9gawU9V73Tj0MAIA.jpg": "https://framerusercontent.com/images/zzjgLBNDUTY9gawU9V73Tj0MAIA.jpg",
+    "/assets/M1pxKhDRRpgPCRtnrjSOsISF26A.jpg": "https://framerusercontent.com/images/M1pxKhDRRpgPCRtnrjSOsISF26A.jpg",
+    "/assets/r74mSl0BjfaIR0dXpq15Xt539A.jpg": "https://framerusercontent.com/images/r74mSl0BjfaIR0dXpq15Xt539A.jpg",
+    "/assets/rG4fe1Fw5vHaaN2zYg4MDxza0vo.jpg": "https://framerusercontent.com/images/rG4fe1Fw5vHaaN2zYg4MDxza0vo.jpg",
+    "/assets/thklChJboY0Qc0B7YkwKgyLr6Y.jpg": "https://framerusercontent.com/images/thklChJboY0Qc0B7YkwKgyLr6Y.jpg",
+    "/assets/C8tDKSiovIgfT1KcsUg1dYx85Rk.jpg": "https://framerusercontent.com/images/C8tDKSiovIgfT1KcsUg1dYx85Rk.jpg",
+    "/assets/nt7WjRM2LLpbgFEH9HAXhUp5TeY.jpg": "https://framerusercontent.com/images/nt7WjRM2LLpbgFEH9HAXhUp5TeY.jpg",
+    "/assets/TX9dHdwb5uoPVhyVebxBpqQAuuQ.jpg": "https://framerusercontent.com/images/TX9dHdwb5uoPVhyVebxBpqQAuuQ.jpg",
+    "/assets/RV9WhAxt7KaAgMk7S3P2Pl9KA64.jpg": "https://framerusercontent.com/images/RV9WhAxt7KaAgMk7S3P2Pl9KA64.jpg",
+    "/assets/m8fm2UFHu3fN9UV6zJNPhXid7bE.jpg": "https://framerusercontent.com/images/m8fm2UFHu3fN9UV6zJNPhXid7bE.jpg",
+    "/assets/wiav9FXTe4NB8IcB7KRvE0MP7BU.jpg": "https://framerusercontent.com/images/wiav9FXTe4NB8IcB7KRvE0MP7BU.jpg",
+    "/assets/KySNpAh5kpLoR4FMcGmxRFoWtQ.jpg": "https://framerusercontent.com/images/KySNpAh5kpLoR4FMcGmxRFoWtQ.jpg",
+    "/assets/5XYtJ1vpnKd0TDAyK4SsGFJi5nE.jpg": "https://framerusercontent.com/images/5XYtJ1vpnKd0TDAyK4SsGFJi5nE.jpg",
+    "/assets/hrxR0ZL6RFwOklt2I16fTYrffk.jpg": "https://framerusercontent.com/images/hrxR0ZL6RFwOklt2I16fTYrffk.jpg",
+    "/assets/nERL1K2sOpW8hHBzngzLdn2jW70.jpg": "https://framerusercontent.com/images/nERL1K2sOpW8hHBzngzLdn2jW70.jpg",
+    "/assets/s3Z2umwfTAZZWnEBFuDFsvajbEM.jpg": "https://framerusercontent.com/images/s3Z2umwfTAZZWnEBFuDFsvajbEM.jpg",
+    "/assets/NFPuflEdQGm2TcSUZzI1V0GVbYw.jpg": "https://framerusercontent.com/images/NFPuflEdQGm2TcSUZzI1V0GVbYw.jpg",
+    "/assets/23S7IEF5BRzVuA43WzsgXhj6BkQ.jpg": "https://framerusercontent.com/images/23S7IEF5BRzVuA43WzsgXhj6BkQ.jpg",
+    "/assets/vEppacHx0rmAstk62kj1bCUyTLw.jpg": "https://framerusercontent.com/images/vEppacHx0rmAstk62kj1bCUyTLw.jpg",
+    "/assets/PnZKmmVHJuNpO6SViz2dYN7zBY.jpg": "https://framerusercontent.com/images/PnZKmmVHJuNpO6SViz2dYN7zBY.jpg",
+    "/assets/oJJoB1oXEexxzEXsK6ietaR0lPQ.jpg": "https://framerusercontent.com/images/oJJoB1oXEexxzEXsK6ietaR0lPQ.jpg",
+    "/assets/244xItYEEorWpy8R1ko4J7BbBRI.jpg": "https://framerusercontent.com/images/244xItYEEorWpy8R1ko4J7BbBRI.jpg",
+    "/assets/3RnlZlQ1t0O38tBkpRExbxMtPQ4.jpg": "https://framerusercontent.com/images/3RnlZlQ1t0O38tBkpRExbxMtPQ4.jpg",
+    "/assets/iHfT8JW4u4sTqOxu45BOvCk4X4.jpg": "https://framerusercontent.com/images/iHfT8JW4u4sTqOxu45BOvCk4X4.jpg",
+    "/assets/qkqBVwl63wbO8vhP7zjDukEDMU.jpg": "https://framerusercontent.com/images/qkqBVwl63wbO8vhP7zjDukEDMU.jpg",
+    "/assets/P7AaGFszWIPapF953KHkdSXCc.jpg": "https://framerusercontent.com/images/P7AaGFszWIPapF953KHkdSXCc.jpg",
+    "/assets/wUEt0rMG9V8G8PIoyWO0bCPvGL0.jpg": "https://framerusercontent.com/images/wUEt0rMG9V8G8PIoyWO0bCPvGL0.jpg",
+    "/assets/TizmY5bRs1wEbp3yTYl043QzMis.jpg": "https://framerusercontent.com/images/TizmY5bRs1wEbp3yTYl043QzMis.jpg",
+    "/assets/B23VGl0bzZR2hlQn4KASHvAqhg.jpg": "https://framerusercontent.com/images/B23VGl0bzZR2hlQn4KASHvAqhg.jpg",
+    "/assets/UBlGWWSLqt3T83gMyWy1LuVmk18.jpg": "https://framerusercontent.com/images/UBlGWWSLqt3T83gMyWy1LuVmk18.jpg",
+    "/assets/p8XxRciDdCJyFGL2XMSabypzU.jpg": "https://framerusercontent.com/images/p8XxRciDdCJyFGL2XMSabypzU.jpg",
+    "/assets/S4RjaqVp887L7hl6b4yiLlWNCOg.jpg": "https://framerusercontent.com/images/S4RjaqVp887L7hl6b4yiLlWNCOg.jpg",
+    "/assets/BTBiZlANF5b4QSpqNadiEpsrN48.jpg": "https://framerusercontent.com/images/BTBiZlANF5b4QSpqNadiEpsrN48.jpg",
+    "/assets/4nrKatCLZNHZFPP47UWPWq29k0.jpg": "https://framerusercontent.com/images/4nrKatCLZNHZFPP47UWPWq29k0.jpg",
+    "/assets/JtZjyL2N2Un8jMgR31m3bxgBE.jpg": "https://framerusercontent.com/images/JtZjyL2N2Un8jMgR31m3bxgBE.jpg",
+    "/assets/5INLwPnuTFMjer5mowmRHwZFA5I.jpg": "https://framerusercontent.com/images/5INLwPnuTFMjer5mowmRHwZFA5I.jpg",
+    "/assets/yH3pcoRQrDsduLpjVeKe6nhxko.jpg": "https://framerusercontent.com/images/yH3pcoRQrDsduLpjVeKe6nhxko.jpg",
+    "/assets/K4ErTwPZ9T8bHrSAp28P8L7sf0.jpg": "https://framerusercontent.com/images/K4ErTwPZ9T8bHrSAp28P8L7sf0.jpg",
+    "/assets/aMiBeP7lVbeQEr3RriAfvFkXDQ.jpg": "https://framerusercontent.com/images/aMiBeP7lVbeQEr3RriAfvFkXDQ.jpg",
+    "/assets/iuhpVUoDPcmxyaXLjhUXpHN9w.jpg": "https://framerusercontent.com/images/iuhpVUoDPcmxyaXLjhUXpHN9w.jpg",
+    "/assets/tIElwEV5CQoQUHTXOZnBNenl2JI.jpg": "https://framerusercontent.com/images/tIElwEV5CQoQUHTXOZnBNenl2JI.jpg",
+    "/assets/EVGwbfkDUJhs8QWv5jleheYRZhM.jpg": "https://framerusercontent.com/images/EVGwbfkDUJhs8QWv5jleheYRZhM.jpg",
+    "/assets/0RCrUJaWH0Q5tvmC1IRHA6LPF70.jpg": "https://framerusercontent.com/images/0RCrUJaWH0Q5tvmC1IRHA6LPF70.jpg"
+  },
+  "fonts": {
+    "400-normal": "/assets/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2",
+    "700-normal": "/assets/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2",
+    "700-italic": "/assets/A7AS3UPAGLC7MDVC67SBNTE5FGF2Z2RG.woff2",
+    "400-italic": "/assets/O34WRFYO7JNWEBBA2LRV2XYRUSYXYDKH.woff2",
+    "500-normal": "/assets/6XPIMU23OJVRY676OG5YVJMWEHWICATX.woff2",
+    "500-italic": "/assets/C6VLICDGQWYKV6YT65TM5G3OVN4AOZBN.woff2",
+    "900-normal": "/assets/TOHQHMLIEIPKVF2JPM6SVKXFYGO5G2TJ.woff2",
+    "900-italic": "/assets/J7XVDQ2IJENINPUAVBDJNH3VEXVDSPQQ.woff2",
+    "600-normal": "/assets/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2"
+  },
+  "intro": [
+    {
+      "title": "Shield Soother",
+      "image": "/assets/characters/character-1-landscape.webp"
+    },
+    {
+      "title": "Mind Trimmer",
+      "image": "/assets/characters/character-2-landscape.webp"
+    },
+    {
+      "title": "Gloom Blaster",
+      "image": "/assets/characters/character-3-landscape.webp"
+    }
+  ],
+  "copy": {
+    "workTitle": [
+      "GLOW MEND",
+      "SERIES"
+    ],
+    "footerCopyright": "© 2026 Kim Chou. All rights reserved.",
+    "footerNote": "Creation since 2026",
+    "footerCredit": "Designed by Kim Chou"
+  }
+}

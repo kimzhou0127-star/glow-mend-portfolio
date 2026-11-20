@@ -1,0 +1,11 @@
+"use client";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { CustomEase } from "gsap/CustomEase";
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText, CustomEase, ScrollToPlugin);
+CustomEase.create("portfolioReveal", "0.22,1,0.36,1");
+CustomEase.create("portfolioLift", "0.76,0,0.24,1");
+export { gsap, useGSAP, ScrollTrigger, SplitText };

@@ -1215,3 +1215,24 @@ body { letter-spacing: 0; }
 .gallery-video { position: absolute; inset: 0; }
 .gallery-video video, .gallery-video > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .gallery-video-retry { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 12px 20px; border-radius: 30px; background: #ffffffdd; color: #222; }
+
+/* Home sphere gallery. Shared navigation, footer and character layouts stay independent. */
+.sphere-home { justify-content: flex-end; background: #fff; }
+.sphere-stage { position: absolute; inset: 90px 18px 100px; isolation: isolate; overflow: hidden; touch-action: none; cursor: grab; }
+.sphere-stage[data-dragging='true'], .sphere-stage[data-dragging='true'] * { cursor: grabbing; }
+.sphere-card { display: block; position: absolute; left: 0; top: 0; width: 200px; opacity: 0; will-change: transform; user-select: none; -webkit-user-drag: none; cursor: pointer; }
+.sphere-card img { display: block; width: 100%; height: auto; pointer-events: none; }
+.sphere-card:focus-visible { outline: 2px solid #222; outline-offset: 5px; }
+.sphere-copy { position: absolute; inset: 90px 24px 100px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; pointer-events: none; z-index: 50; }
+.sphere-copy h1, .sphere-copy p { max-width: 920px; width: 100%; font-weight: 400; letter-spacing: 0; font-family: 'Portfolio Reference', Arial, 'PingFang SC', sans-serif; }
+.sphere-english { color: #777; font-size: clamp(20px, 1.94444vw, 32px); line-height: 1.25; }
+.sphere-chinese { color: #111; font-size: clamp(18px, 1.80555vw, 30px); line-height: 1.4; margin-top: 24px; }
+.sphere-copy-line { display: block; }
+.sphere-char { white-space: pre-wrap; }
+.sphere-home .hero-notes, .sphere-home .home-scroll-note, .sphere-home .sound-toggle { z-index: 60; }
+@media (max-width: 809.98px) {
+  .sphere-stage { inset: 100px 8px 120px; }
+  .sphere-copy { inset: 100px 20px 120px; }
+  .sphere-english { font-size: clamp(16px, 3vw, 22px); }
+  .sphere-chinese { font-size: clamp(15px, 2.8vw, 20px); margin-top: 18px; }
+}

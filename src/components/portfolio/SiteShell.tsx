@@ -87,14 +87,14 @@ function Navigation() {
     <>
       <header className={`site-nav ${open ? "menu-is-open" : ""}`}>
         <Link className="identity" href="/" onClick={() => setOpen(false)}>
-          <span>{data.profile.name}</span>
-          <span className="muted">{data.profile.role}</span>
+          <span data-gallery-contrast>{data.profile.name}</span>
+          <span className="muted" data-gallery-contrast>{data.profile.role}</span>
         </Link>
         <div className="location">
-          <span>{data.profile.city}</span>
+          <span data-gallery-contrast>{data.profile.city}</span>
           <span>
-            <span className="muted">Your time&nbsp; </span>
-            {time}
+            <span className="muted" data-gallery-contrast>Your time&nbsp; </span>
+            <span data-gallery-contrast>{time}</span>
           </span>
         </div>
         <nav className="desktop-links" aria-label="Main navigation">
@@ -106,12 +106,12 @@ function Navigation() {
                 path.startsWith(`/${label.toLowerCase()}`) ? "page" : undefined
               }
             >
-              {label.toUpperCase()}
+              <span data-gallery-contrast>{label.toUpperCase()}</span>
             </Link>
           ))}
         </nav>
         <div className="nav-social">
-          <span>{data.profile.navSignature}</span>
+          <span data-gallery-contrast>{data.profile.navSignature}</span>
         </div>
         <button
           className="menu-button"
@@ -120,7 +120,7 @@ function Navigation() {
           aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
         >
-          {open ? "Close" : "Menu"}
+          <span data-gallery-contrast>{open ? "Close" : "Menu"}</span>
         </button>
       </header>
       <div
@@ -142,7 +142,7 @@ function Navigation() {
           ))}
         </nav>
         <div className="mobile-social">
-          <span>{data.profile.navSignature}</span>
+          <span data-gallery-contrast>{data.profile.navSignature}</span>
         </div>
       </div>
     </>

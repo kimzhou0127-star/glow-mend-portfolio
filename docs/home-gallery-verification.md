@@ -1,19 +1,19 @@
-# Homepage sphere gallery — preview verification
+# Homepage sphere gallery — release verification
 
 ## Change
 
-Replaces only the homepage ring with 12 original-ratio images. Source reference: https://adamjakubowski.pl/ (public sphere component inspected 2026-11-23). Implemented independently with GSAP and DOM image links. The reference's public code uses sphere distribution, billboards, dragging, inertia and modifier-wheel zoom; this version adds the approved centered bilingual copy and per-character collision fading on white.
+Replaces only the homepage ring with 12 original-ratio images. Source reference: https://adamjakubowski.pl/ (public sphere component inspected 2026-11-23). Implemented independently with GSAP and DOM image links. The reference's public code uses sphere distribution, billboards, dragging, inertia and modifier-wheel zoom; the approved version uses a white background, no central copy or drag hint, and locally white header/footer glyphs where images pass behind them.
 
-User upload order maps 1–4 to Shield Soother, 5–8 to Mind Trimmer, 9–12 to Gloom Blaster. `src/data/home-gallery.json` preserves original dimensions, filenames and role destinations. Images are interleaved spatially. Generated assets total approximately 1.4 MiB. No character media, loader logic, shared navigation or existing project data was edited.
+User upload order maps 1–4 to Shield Soother, 5–8 to Mind Trimmer, 9–12 to Gloom Blaster. `src/data/home-gallery.json` preserves original dimensions, filenames and role destinations. Images are interleaved spatially. Generated assets total approximately 1.4 MiB. Image size is 4/3 of the initial sphere preview. The compact orbit is expanded by 8% with small deterministic offsets; the stage retains full-screen boundaries. Character media, loader logic, navigation destinations, and existing project data are unchanged. Navigation text has contrast hooks that are active only on the homepage and cleaned up when leaving.
 
 ## Automated verification
 
-- `node scripts/test-home-sphere.mjs`: role links, all original proportions, projected bounds over full rotations at 1440/1280/1920/2560 desktop widths and a narrow fallback, damping independence, image decode reveal, automatic rotation, drag suppression, ordinary click, keyboard focus/navigation, pointer cancellation, zoom modifiers, reduced motion, tab visibility, text collision fade/recovery and event/ticker cleanup.
+- `node scripts/test-home-sphere.mjs`: role links, all original proportions, reachable image bounds over full rotations at 1440/1280/1920/2560 desktop widths and a narrow fallback, damping independence, image decode reveal, automatic rotation, drag suppression, ordinary click, keyboard focus/navigation, pointer cancellation, zoom modifiers, reduced motion, tab visibility, text overlap whitening/recovery and event/ticker cleanup.
 - Existing gallery playback and all three character interaction tests pass.
 - Production build and TypeScript check pass. ESLint has only the six existing image-element performance warnings.
-- `main` remains the approved live site; changes are on `feat/home-sphere-gallery` for preview review.
+- User approved the compact-v5 local preview for publication on 2026-11-25. Release goes through the existing repository and Netlify production build.
 
-## Remaining visual acceptance
+## Browser verification limitations
 
 The browser controller timed out. Chrome and bundled headless Chromium both could not start in this environment (OS process permission failure). No real-browser screenshot or input performance measurement is claimed. The geometry and lifecycle tests use DOM fixtures; they do not replace visual acceptance.
 

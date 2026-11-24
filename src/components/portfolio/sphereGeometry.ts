@@ -16,17 +16,30 @@ export function rotatePoint(p: Point3, pitch: number, yaw: number): Point3 {
   const z = p.y * Math.sin(pitch) + p.z * Math.cos(pitch);
   return { x: p.x * Math.cos(yaw) + z * Math.sin(yaw), y, z: -p.x * Math.sin(yaw) + z * Math.cos(yaw) };
 }
-export function projectCard(p: Point3, width: number, height: number, aspect: number, zoom: number, hover = 0): Box & { scale: number; depth: number } {
-  const unit = Math.min(width / 1440, height / 700);
-  const baseWidth = (aspect > 1 ? 310 : 185) * unit;
+export function projectCard(p: Point3, width: number, height: number, aspect: number, zoom: number, hover = 0, index = 0): Box & { scale: number; depth: number } {
+  // Preserve the approved image size while expanding only the movement field.
+  const mobile = width < 810;
+  const unit = Math.min((width - (mobile ? 16 : 36)) / 1440, (height - (mobile ? 220 : 190)) / 700);
+  const baseWidth = (aspect > 1 ? 310 : 185) * unit * (2 / 1.5);
   const perspective = 1 / (1 - p.z * .28);
   const scale = perspective * zoom * (1 + .035 * hover);
   const w = baseWidth * scale, h = w / aspect;
-  // The elliptical projection keeps the whole card below navigation and above the footer.
-  const x = width / 2 + p.x * (width / 2 - 225 * unit) * perspective * .88;
-  const y = height / 2 + p.y * (height / 2 - 180 * unit) * perspective * .88;
-  return { x: clamp(x - w / 2, 6, Math.max(6, width - w - 6)), y: clamp(y - h / 2, 6, Math.max(6, height - h - 6)), width: w, height: h, scale, depth: p.z };
+  // Slightly open up the original compact orbit; keep the full-screen boundary.
+  const originalWidth = width - (mobile ? 16 : 36);
+  const originalHeight = height - (mobile ? 220 : 190);
+  const radiusX = (originalWidth / 2 - 225 * unit) * .88 * 1.08;
+  const radiusY = (originalHeight / 2 - 180 * unit) * .88 * 1.08;
+  const x = width / 2 + p.x * radiusX * perspective + Math.sin(index * 2.4) * width * .008;
+  const y = height / 2 + p.y * radiusY * perspective + Math.cos(index * 1.7) * height * .012;
+  return { x: clamp(x, 0, width) - w / 2, y: clamp(y, 0, height) - h / 2, width: w, height: h, scale, depth: p.z };
 }
 export function overlaps(a: Box, b: Box, padding = 8) {
   return a.x < b.x + b.width + padding && a.x + a.width > b.x - padding && a.y < b.y + b.height + padding && a.y + a.height > b.y - padding;
+}
+
+// Paint only the glyph pixels covered by an image white; uncovered text keeps its color.
+export function textImageBackground(text: Box, images: Box[], color: string) {
+  const layers = images.filter(image => overlaps(text, image, 0)).map(image =>
+    `linear-gradient(#fff,#fff) ${image.x - text.x}px ${image.y - text.y}px / ${image.width}px ${image.height}px no-repeat`);
+  return [...layers, `linear-gradient(${color},${color})`].join(',');
 }

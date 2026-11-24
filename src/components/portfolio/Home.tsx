@@ -5,14 +5,11 @@ import data from "@/data/portfolio.json";
 import gallery from "@/data/home-gallery.json";
 import { useIntro } from "./SiteShell";
 import { gsap, useGSAP } from "./motion";
-import { clamp, damp, overlaps, projectCard, rotatePoint, spherePoints, type Box } from "./sphereGeometry";
+import { clamp, damp, projectCard, rotatePoint, spherePoints, textImageBackground, type Box } from "./sphereGeometry";
 
 // Interleave the roles without changing each image's explicit destination.
 const items = [0, 4, 8, 1, 5, 9, 2, 6, 10, 3, 7, 11].map(i => gallery[i]);
 const points = spherePoints(items.length);
-function CopyLines({ text }: { text: string }) {
-  return text.split("\n").map((line, i) => <span className="sphere-copy-line" key={i} aria-hidden="true">{Array.from(line).map((char, j) => <span className="sphere-char" key={j}>{char}</span>)}</span>);
-}
 export function Home() {
   const ready = useIntro();
   const root = useRef<HTMLElement>(null);
@@ -37,9 +34,11 @@ export function Home() {
     const area = stage.current, section = root.current;
     if (!ready || !area || !section) return;
     const cards = Array.from(area.querySelectorAll<HTMLAnchorElement>(".sphere-card"));
-    const chars = Array.from(section.querySelectorAll<HTMLElement>(".sphere-char"));
-    const lines = Array.from(section.querySelectorAll<HTMLElement>(".sphere-copy-line"));
-    const copy = section.querySelector<HTMLElement>(".sphere-copy")!;
+    const textElements = Array.from(section.parentElement!.parentElement!.querySelectorAll<HTMLElement>(".site-nav [data-gallery-contrast], .sphere-home [data-gallery-contrast]"));
+    const textStyles = textElements.map(element => element.getAttribute("style"));
+    const textColors = textElements.map(element => getComputedStyle(element).color);
+    let textBoxes: Box[] = [];
+    const textBackgrounds = textElements.map(() => "");
     const preference = matchMedia("(prefers-reduced-motion: reduce)");
     let reduced = preference.matches, disposed = false, dirty = true;
     let width = 1, height = 1, elapsed = 0, pitch = -.12, yaw = .35;
@@ -48,12 +47,12 @@ export function Home() {
     let drag: { id: number; x: number; y: number; startX: number; startY: number; moved: boolean; time: number; target: HTMLElement } | null = null;
     let suppressClick = false;
     const loaded = cards.map(() => false), alpha = cards.map(() => 0), hoverAmount = cards.map(() => 0);
-    const charAlpha = chars.map(() => 1);
-    let letterBoxes: Box[] = [];
     const measure = () => {
       const bounds = area.getBoundingClientRect(); width = bounds.width; height = bounds.height;
-      // Reads happen only after font/size changes and after the entrance settles.
-      letterBoxes = chars.map(char => { const b = char.getBoundingClientRect(); return { x: b.left - bounds.left, y: b.top - bounds.top, width: b.width, height: b.height }; });
+      textBoxes = textElements.map(element => {
+        const rect = element.getBoundingClientRect();
+        return { x: rect.left - bounds.left, y: rect.top - bounds.top, width: rect.width, height: rect.height };
+      });
       cards.forEach((card, i) => {
         const box = projectCard(points[i], width, height, items[i].width / items[i].height, 1);
         card.style.width = `${box.width / box.scale}px`;
@@ -67,11 +66,11 @@ export function Home() {
       });
     });
     const observer = new ResizeObserver(() => { dirty = true; });
-    observer.observe(area); observer.observe(copy);
-    const fontsChanged = () => { if (!disposed) dirty = true; };
-    void document.fonts.ready.then(fontsChanged);
-    document.fonts.addEventListener("loadingdone", fontsChanged);
-    const entrance = gsap.fromTo(lines, { y: reduced ? 0 : 12, opacity: 0 }, { y: 0, opacity: 1, duration: reduced ? 0 : .55, stagger: reduced ? 0 : .05, ease: "power2.out", onComplete: fontsChanged });
+    observer.observe(area);
+    textElements.forEach(element => observer.observe(element));
+    const invalidate = () => { dirty = true; };
+    void document.fonts.ready.then(() => { if (!disposed) invalidate(); });
+    document.fonts.addEventListener("loadingdone", invalidate);
     const setHover = (event: PointerEvent) => {
       const card = (event.target as Element).closest<HTMLAnchorElement>(".sphere-card");
       const index = card ? cards.indexOf(card) : -1;
@@ -127,11 +126,11 @@ export function Home() {
         vx = damp(vx, 0, 4.8, dt); vy = damp(vy, 0, 4.8, dt);
       }
       zoom = damp(zoom, targetZoom, 10, dt);
-      const boxes: Box[] = [];
+      const imageBoxes: Box[] = [];
       cards.forEach((card, i) => {
         hoverAmount[i] = damp(hoverAmount[i], hover === i || focused === i ? 1 : 0, 10, dt);
         const p = rotatePoint(points[i], pitch, yaw);
-        const box = projectCard(p, width, height, items[i].width / items[i].height, zoom, hoverAmount[i]);
+        const box = projectCard(p, width, height, items[i].width / items[i].height, zoom, hoverAmount[i], i);
         const intro = reduced ? 1 : 1 - Math.pow(1 - clamp((elapsed - i * .025) / .85, 0, 1), 3);
         alpha[i] = damp(alpha[i], loaded[i] ? 1 : 0, 9, dt);
         const x = width / 2 + (box.x + box.width / 2 - width / 2) * intro;
@@ -140,13 +139,19 @@ export function Home() {
         card.style.opacity = String(alpha[i] * intro);
         card.style.zIndex = String(focused === i ? 40 : Math.round((p.z + 1) * 10));
         card.style.pointerEvents = alpha[i] > .5 ? "auto" : "none";
-        if (alpha[i] > .5 && intro > .99) boxes.push(box);
+        if (alpha[i] * intro > .5) {
+          const w = box.width * (.8 + .2 * intro), h = box.height * (.8 + .2 * intro);
+          imageBoxes.push({ x: x - w / 2, y: y - h / 2, width: w, height: h });
+        }
       });
-      if (elapsed < .9) return;
-      chars.forEach((char, i) => {
-        const hit = letterBoxes[i] && boxes.some(box => overlaps(letterBoxes[i], box));
-        charAlpha[i] = damp(charAlpha[i], hit ? 0 : 1, hit ? 18 : 9, dt);
-        char.style.opacity = String(charAlpha[i]);
+      textElements.forEach((element, i) => {
+        const background = textImageBackground(textBoxes[i], imageBoxes, textColors[i]);
+        if (background === textBackgrounds[i]) return;
+        textBackgrounds[i] = background;
+        element.style.background = background;
+        element.style.backgroundClip = "text";
+        element.style.webkitBackgroundClip = "text";
+        element.style.color = "transparent";
       });
     };
     area.addEventListener("pointerdown", down); area.addEventListener("pointermove", move);
@@ -158,13 +163,18 @@ export function Home() {
     document.addEventListener("visibilitychange", visibility); preference.addEventListener("change", changePreference);
     gsap.ticker.add(update);
     return () => {
-      disposed = true; gsap.ticker.remove(update); entrance.kill(); observer.disconnect();
+      disposed = true; gsap.ticker.remove(update); observer.disconnect();
+      document.fonts.removeEventListener("loadingdone", invalidate);
+      textElements.forEach((element, i) => {
+        if (textStyles[i] === null) element.removeAttribute("style");
+        else element.setAttribute("style", textStyles[i]!);
+      });
       area.removeEventListener("pointerdown", down); area.removeEventListener("pointermove", move);
       area.removeEventListener("pointerup", up); area.removeEventListener("pointercancel", cancel);
       area.removeEventListener("pointerleave", leave); area.removeEventListener("click", click, true);
       area.removeEventListener("wheel", wheel); area.removeEventListener("focusin", focusIn); area.removeEventListener("focusout", focusOut);
       window.removeEventListener("pointerup", up); window.removeEventListener("blur", cancel);
-      document.removeEventListener("visibilitychange", visibility); document.fonts.removeEventListener("loadingdone", fontsChanged); preference.removeEventListener("change", changePreference);
+      document.removeEventListener("visibilitychange", visibility); preference.removeEventListener("change", changePreference);
     };
   }, { scope: root, dependencies: [ready], revertOnUpdate: true });
   const toggleSound = async () => {
@@ -179,12 +189,7 @@ export function Home() {
         <img src={item.src} alt={item.alt} width={item.width} height={item.height} draggable={false} decoding="async" />
       </Link>)}
     </div>
-    <div className="sphere-copy">
-      <h1 className="sphere-english" aria-label={data.profile.hero}><CopyLines text={data.profile.hero} /></h1>
-      <p className="sphere-chinese" aria-label={data.profile.heroChinese}><CopyLines text={data.profile.heroChinese} /></p>
-    </div>
-    <button className="sound-toggle" aria-pressed={sound} onClick={toggleSound}><span aria-hidden="true">◖</span> Sound {sound ? "on" : "off"}</button>
-    <span className="home-scroll-note">[ Drag to explore ]</span>
-    <div className="hero-notes"><span>{data.copy.footerCopyright}</span><span>{data.copy.footerNote}</span><span className="footer-credit">{data.copy.footerCredit}</span></div>
+    <button className="sound-toggle" aria-pressed={sound} onClick={toggleSound}><span aria-hidden="true" data-gallery-contrast>◖</span><span data-gallery-contrast>Sound {sound ? "on" : "off"}</span></button>
+    <div className="hero-notes"><span data-gallery-contrast>{data.copy.footerCopyright}</span><span data-gallery-contrast>{data.copy.footerNote}</span><span className="footer-credit" data-gallery-contrast>{data.copy.footerCredit}</span></div>
   </section>;
 }

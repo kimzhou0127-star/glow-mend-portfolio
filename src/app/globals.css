@@ -1218,7 +1218,7 @@ body { letter-spacing: 0; }
 
 /* Home sphere gallery. Shared navigation, footer and character layouts stay independent. */
 .sphere-home { justify-content: flex-end; background: #fff; }
-.sphere-stage { position: absolute; inset: 90px 18px 100px; isolation: isolate; overflow: hidden; touch-action: none; cursor: grab; }
+.sphere-stage { position: absolute; inset: 0; isolation: isolate; overflow: hidden; touch-action: none; cursor: grab; }
 .sphere-stage[data-dragging='true'], .sphere-stage[data-dragging='true'] * { cursor: grabbing; }
 .sphere-card { display: block; position: absolute; left: 0; top: 0; width: 200px; opacity: 0; will-change: transform; user-select: none; -webkit-user-drag: none; cursor: pointer; }
 .sphere-card img { display: block; width: 100%; height: auto; pointer-events: none; }
@@ -1231,7 +1231,7 @@ body { letter-spacing: 0; }
 .sphere-char { white-space: pre-wrap; }
 .sphere-home .hero-notes, .sphere-home .home-scroll-note, .sphere-home .sound-toggle { z-index: 60; }
 @media (max-width: 809.98px) {
-  .sphere-stage { inset: 100px 8px 120px; }
+  .sphere-stage { inset: 0; }
   .sphere-copy { inset: 100px 20px 120px; }
   .sphere-english { font-size: clamp(16px, 3vw, 22px); }
   .sphere-chinese { font-size: clamp(15px, 2.8vw, 20px); margin-top: 18px; }

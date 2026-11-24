@@ -1,6 +1,6 @@
 # Glow Mend Portfolio
 
-Kim Chou 的互动角色作品网站，使用 Next.js 16、React 19、TypeScript 与 GSAP，静态导出到 Netlify。包含首页项目环、Work 横向作品列表，以及三个角色详情页。
+Kim Chou 的互动角色作品网站，使用 Next.js 16、React 19、TypeScript 与 GSAP，静态导出到 Netlify。包含首页三维图片画廊、Work 横向作品列表，以及三个角色详情页。
 
 ## 本地运行
 
@@ -16,6 +16,7 @@ npm run dev
 ```sh
 npm run typecheck
 npm run lint
+node scripts/test-home-sphere.mjs
 node scripts/test-gallery-playback.mjs
 CHARACTER_INDEX=0 node scripts/test-character-interaction.mjs
 CHARACTER_INDEX=1 node scripts/test-character-interaction.mjs
@@ -27,7 +28,7 @@ npm run build
 
 ## 页面与编辑
 
-- `/`：视频开场与首页项目环。
+- `/`：视频开场与首页三维图片画廊。
 - `/work/`：Glow Mend 系列横向作品列表。
 - `/work/halden-farm/`：Shield Soother／心盾抚慰师。
 - `/work/fieldwork-co/`：Mind Trimmer／思绪修整师。
@@ -64,3 +65,7 @@ python3 scripts/prepare-gallery-videos.py
 ## 来源
 
 工程起始模板：[JCodesMore/ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template)。原版 MIT 许可保留在 `LICENSE`。布局与动效最初参考 [Theo Portfolio](https://theoportfolio.framer.photos/)，再按 Kim Chou 的设计和角色素材调整。第三方字体与素材的权利归各自权利人，模板许可不自动覆盖这些素材。
+
+## 首页画廊
+
+`src/data/home-gallery.json` 独立配置 12 张首页图片及各自角色链接。图 1–4 对应角色1，5–8 对应角色2，9–12 对应角色3。慢速自转、拖动阻尼、Ctrl/Command＋滚轮缩放；首页不显示中央正文或拖动提示，图片保持原始比例；布局比原紧凑版本略展开 8%，带轻微固定错位。图片经过页眉页脚时，仅重叠文字变白，离开后恢复原色。页眉页脚位置及详情页媒体保持不变。

@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "src": "/assets/home-gallery/gallery-01.webp",
+    "width": 1792,
+    "height": 2400,
+    "slug": "halden-farm",
+    "alt": "Shield Soother — 1",
+    "source": "image_10ce315a-2d35-4369-884b-3fdeae2026cf_0.jpg"
+  },
+  {
+    "id": 2,
+    "src": "/assets/home-gallery/gallery-02.webp",
+    "width": 2781,
+    "height": 1552,
+    "slug": "halden-farm",
+    "alt": "Shield Soother — 2",
+    "source": "角色1-2.jpg"
+  },
+  {
+    "id": 3,
+    "src": "/assets/home-gallery/gallery-03.webp",
+    "width": 1728,
+    "height": 2304,
+    "slug": "halden-farm",
+    "alt": "Shield Soother — 3",
+    "source": "ebd22853-1183-476f-a5d0-a803de5b6ba5.png"
+  },
+  {
+    "id": 4,
+    "src": "/assets/home-gallery/gallery-04.webp",
+    "width": 1672,
+    "height": 941,
+    "slug": "halden-farm",
+    "alt": "Shield Soother — 4",
+    "source": "TapNow_1790313076653_2348e67a-aa62-48d1-8d17-817ef8c2b3f1_1.png"
+  },
+  {
+    "id": 5,
+    "src": "/assets/home-gallery/gallery-05.webp",
+    "width": 1792,
+    "height": 2400,
+    "slug": "fieldwork-co",
+    "alt": "Mind Trimmer — 1",
+    "source": "image_2c8c29ea-e5a6-4e43-b9e7-1c1ba80f3731_0.jpg"
+  },
+  {
+    "id": 6,
+    "src": "/assets/home-gallery/gallery-06.webp",
+    "width": 2781,
+    "height": 1552,
+    "slug": "fieldwork-co",
+    "alt": "Mind Trimmer — 2",
+    "source": "角色1-2.jpg"
+  },
+  {
+    "id": 7,
+    "src": "/assets/home-gallery/gallery-07.webp",
+    "width": 1728,
+    "height": 2314,
+    "slug": "fieldwork-co",
+    "alt": "Mind Trimmer — 3",
+    "source": "image_d9fd3839-f151-460f-984e-f8136a6226b0_0.png"
+  },
+  {
+    "id": 8,
+    "src": "/assets/home-gallery/gallery-08.webp",
+    "width": 1792,
+    "height": 2400,
+    "slug": "fieldwork-co",
+    "alt": "Mind Trimmer — 4",
+    "source": "image_ee5d948e-1fdb-4121-b8ee-88cd3a274c2a_0.jpg"
+  },
+  {
+    "id": 9,
+    "src": "/assets/home-gallery/gallery-09.webp",
+    "width": 1792,
+    "height": 2400,
+    "slug": "merel-skin",
+    "alt": "Gloom Blaster — 1",
+    "source": "image_e7264be6-9da5-48d1-9749-2d079400fab0_0.jpg"
+  },
+  {
+    "id": 10,
+    "src": "/assets/home-gallery/gallery-10.webp",
+    "width": 1792,
+    "height": 2400,
+    "slug": "merel-skin",
+    "alt": "Gloom Blaster — 2",
+    "source": "image_b5ad2283-b592-45f7-8c94-18cf58b20cb2_0-(1).jpg"
+  },
+  {
+    "id": 11,
+    "src": "/assets/home-gallery/gallery-11.webp",
+    "width": 2781,
+    "height": 1552,
+    "slug": "merel-skin",
+    "alt": "Gloom Blaster — 3",
+    "source": "角色3-2.jpg"
+  },
+  {
+    "id": 12,
+    "src": "/assets/home-gallery/gallery-12.webp",
+    "width": 1782,
+    "height": 2388,
+    "slug": "merel-skin",
+    "alt": "Gloom Blaster — 4",
+    "source": "996865f8-43f3-433d-be8e-d7b3a39e063d.png"
+  }
+]

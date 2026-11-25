@@ -33,7 +33,16 @@ const jsx=(type,props)=>({type,props});
 const {Home}=load('src/components/portfolio/Home.tsx',{'react':{useRef:()=>({current:[root,stage,null,false][refs++]}),useState:x=>[x,()=>{}]},'react/jsx-runtime':{jsx,jsxs:jsx},'next/link':()=>{},'@/data/portfolio.json':data,'@/data/home-gallery.json':gallery,'./SiteShell':{useIntro:()=>true},'./motion':{gsap,useGSAP:fn=>{const c=fn();if(c)cleanup.push(c);}},'./sphereGeometry':math},{matchMedia:()=>pref,ResizeObserver:class{constructor(callback){resize=callback;}observe(){}disconnect(){disconnected=true;}},document:doc,window:win,getComputedStyle:()=>({color:'rgb(17, 17, 17)'}),performance:{now:()=>clock}});
 Home();await Promise.resolve();await Promise.resolve();resize();
 for(let i=0;i<100;i++)ticker(i,16.67);
-assert.ok(cards.every(c=>Number(c.style.opacity)>.99));
+assert.ok(cards.every(c=>Number(c.style.opacity)>.54&&Number(c.style.opacity)<=1),'decoded cards stay visible at every depth');
+assert.ok(cards.some(c=>Number(c.style.opacity)>.99&&c.style.filter==='none'),'front images stay clear');
+const rearCard=cards.find(c=>Number(c.style.opacity)<.8);
+assert.ok(rearCard&&rearCard.style.filter.startsWith('blur('),'rear images fade and blur');
+rearCard.keyboardFocus=true;stage.listeners.get('focusin')({target:rearCard});
+for(let i=0;i<60;i++)ticker(i,16.67);
+assert.ok(Number(rearCard.style.opacity)>.999&&rearCard.style.filter==='none','keyboard focus restores rear image clarity');
+rearCard.keyboardFocus=false;stage.listeners.get('focusout')();
+for(let i=0;i<60;i++)ticker(i,16.67);
+assert.ok(Number(rearCard.style.opacity)<.9&&rearCard.style.filter!=='none','depth effect returns after focus leaves');
 assert.equal(contrast.style.color,'transparent');assert.equal(contrast.style.backgroundClip,'text');assert.ok(contrast.style.background.includes('linear-gradient(#fff,#fff)'),'image overlap paints white glyphs');
 cards[0].keyboardFocus=true;fireFocus();function fireFocus(){stage.listeners.get('focusin')({target:cards[0]});}
 const focusedPose=cards[0].style.transform;for(let i=0;i<20;i++)ticker(i,16.67);const xy = t => t.match(/translate3d\(([^p]+)px,([^p]+)px/).slice(1).map(Number);assert.ok(Math.hypot(...xy(focusedPose).map((v,i)=>v-xy(cards[0].style.transform)[i]))<1e-6,'keyboard focus pauses movement');
@@ -50,7 +59,7 @@ let wheelPrevented=false;fire('wheel',{ctrlKey:false,metaKey:false,preventDefaul
 fire('wheel',{ctrlKey:true,deltaY:-99999,preventDefault(){wheelPrevented=true;}});assert.equal(wheelPrevented,true);for(let i=0;i<150;i++)ticker(i,16.67);
 pref.matches=true;pref.listeners.get('change')();const still=cards[0].style.transform;for(let i=0;i<20;i++)ticker(i,16.67);assert.ok(Math.hypot(...xy(still).map((v,i)=>v-xy(cards[0].style.transform)[i]))<1e-6,'reduced motion stops rotation');
 doc.hidden=true;doc.listeners.get('visibilitychange')();const hidden=cards[0].style.transform;ticker(200,100);assert.equal(hidden,cards[0].style.transform);
-for(const c of cleanup)c();assert.equal(ticker,null);assert.equal(stage.listeners.size,0);assert.equal(win.listeners.size,0);assert.equal(doc.listeners.size,0);assert.equal(fonts.listeners.size,0);assert.ok(disconnected);assert.equal(Object.keys(contrast.style).length,0,"original header styling restored on leaving homepage");
+for(const c of cleanup)c();assert.ok(cards.every(c=>c.style.filter===''&&c.style.opacity===''),'depth styles clear on unmount');assert.equal(ticker,null);assert.equal(stage.listeners.size,0);assert.equal(win.listeners.size,0);assert.equal(doc.listeners.size,0);assert.equal(fonts.listeners.size,0);assert.ok(disconnected);assert.equal(Object.keys(contrast.style).length,0,"original header styling restored on leaving homepage");
 console.log('PASS: all 12 role mappings, image ratios, full-screen projection, collision padding, damping, decoded-image reveal, auto rotation, drag/click/keyboard distinction, cancel, zoom modifiers, reduced motion, visibility and complete cleanup.');
 
 const label={x:10,y:10,width:100,height:20};
@@ -63,3 +72,11 @@ assert.ok(top.y+top.height/2>200&&bottom.y+bottom.height/2<700,'normal orbit sta
 assert.ok(fs.readFileSync('src/app/globals.css','utf8').includes('.sphere-stage { position: absolute; inset: 0;'),'full-screen movement boundary remains available');
 assert.ok(Math.abs(top.width-185*Math.min(1404/1440,710/700)*2/1.5)<1e-8,'approved image size unchanged');
 console.log('PASS: compact orbit with full-screen boundary, preserved image size, white text only over images and original-color restoration.');
+
+assert.equal(math.depthAppearance(1).opacity,1);assert.equal(math.depthAppearance(1/3).blur,0);
+assert.ok(Math.abs(math.depthAppearance(-1).opacity-.65)<1e-10);assert.equal(math.depthAppearance(-1).blur,6);
+let previous=math.depthAppearance(-1);
+for(let z=-.999;z<=1;z+=.001){const next=math.depthAppearance(z);assert.ok(next.opacity>=previous.opacity&&next.blur<=previous.blur);assert.ok(Math.abs(next.blur-previous.blur)<.007,'smooth depth transitions without a boundary jump');previous=next;}
+console.log('PASS: continuous rear blur/opacity, clear front third, keyboard clarity and depth-style cleanup.');
+
+assert.ok(math.depthAppearance(0).blur>0&&math.depthAppearance(0).opacity<1,'middle layer participates in the gradual effect');

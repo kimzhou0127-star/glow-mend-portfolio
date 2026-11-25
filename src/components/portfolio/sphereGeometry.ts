@@ -3,6 +3,13 @@ export type Box = { x: number; y: number; width: number; height: number };
 export const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 export const damp = (current: number, target: number, rate: number, dt: number) => target + (current - target) * Math.exp(-rate * dt);
 
+export function depthAppearance(depth: number, focus = 0) {
+  // Keep the front third clear; progressively soften the middle and rear thirds.
+  const rear = clamp((1 / 3 - depth) / (4 / 3), 0, 1);
+  const amount = rear * rear * (3 - 2 * rear) * (1 - clamp(focus, 0, 1));
+  return { opacity: 1 - .35 * amount, blur: 6 * amount };
+}
+
 export function spherePoints(count: number): Point3[] {
   const golden = Math.PI * (3 - Math.sqrt(5));
   return Array.from({ length: count }, (_, i) => {

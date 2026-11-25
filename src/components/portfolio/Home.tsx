@@ -5,7 +5,7 @@ import data from "@/data/portfolio.json";
 import gallery from "@/data/home-gallery.json";
 import { useIntro } from "./SiteShell";
 import { gsap, useGSAP } from "./motion";
-import { clamp, damp, projectCard, rotatePoint, spherePoints, textImageBackground, type Box } from "./sphereGeometry";
+import { clamp, damp, depthAppearance, projectCard, rotatePoint, spherePoints, textImageBackground, type Box } from "./sphereGeometry";
 
 // Interleave the roles without changing each image's explicit destination.
 const items = [0, 4, 8, 1, 5, 9, 2, 6, 10, 3, 7, 11].map(i => gallery[i]);
@@ -47,6 +47,7 @@ export function Home() {
     let drag: { id: number; x: number; y: number; startX: number; startY: number; moved: boolean; time: number; target: HTMLElement } | null = null;
     let suppressClick = false;
     const loaded = cards.map(() => false), alpha = cards.map(() => 0), hoverAmount = cards.map(() => 0);
+    const focusAmount = cards.map(() => 0);
     const measure = () => {
       const bounds = area.getBoundingClientRect(); width = bounds.width; height = bounds.height;
       textBoxes = textElements.map(element => {
@@ -130,13 +131,16 @@ export function Home() {
       cards.forEach((card, i) => {
         hoverAmount[i] = damp(hoverAmount[i], hover === i || focused === i ? 1 : 0, 10, dt);
         const p = rotatePoint(points[i], pitch, yaw);
+        focusAmount[i] = reduced ? Number(focused === i) : damp(focusAmount[i], Number(focused === i), 12, dt);
+        const appearance = depthAppearance(p.z, focusAmount[i]);
         const box = projectCard(p, width, height, items[i].width / items[i].height, zoom, hoverAmount[i], i);
         const intro = reduced ? 1 : 1 - Math.pow(1 - clamp((elapsed - i * .025) / .85, 0, 1), 3);
         alpha[i] = damp(alpha[i], loaded[i] ? 1 : 0, 9, dt);
         const x = width / 2 + (box.x + box.width / 2 - width / 2) * intro;
         const y = height / 2 + (box.y + box.height / 2 - height / 2) * intro;
         card.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${box.scale * (.8 + .2 * intro)})`;
-        card.style.opacity = String(alpha[i] * intro);
+        card.style.opacity = String(alpha[i] * intro * appearance.opacity);
+        card.style.filter = appearance.blur < .001 ? "none" : `blur(${appearance.blur.toFixed(3)}px)`;
         card.style.zIndex = String(focused === i ? 40 : Math.round((p.z + 1) * 10));
         card.style.pointerEvents = alpha[i] > .5 ? "auto" : "none";
         if (alpha[i] * intro > .5) {
@@ -164,6 +168,7 @@ export function Home() {
     gsap.ticker.add(update);
     return () => {
       disposed = true; gsap.ticker.remove(update); observer.disconnect();
+      cards.forEach(card => { card.style.filter = ""; card.style.opacity = ""; });
       document.fonts.removeEventListener("loadingdone", invalidate);
       textElements.forEach((element, i) => {
         if (textStyles[i] === null) element.removeAttribute("style");
